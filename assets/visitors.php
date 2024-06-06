@@ -62,7 +62,8 @@
                     <tr>
                         <th>I.D</th>
                         <th>Name</th>
-                        <th>Designation/Position</th>
+                        <th>Designation</th>
+                        <th>Position</th>
                         <th>Rank</th>
                         <th>Unit/Organization</th>
                         <th>Contact Number</th>
@@ -87,6 +88,7 @@
                         <th>I.D</th>
                         <th>Name</th>
                         <th>Designation/Position</th>
+                        <th>Position</th>
                         <th>Rank</th>
                         <th>Unit/Organization</th>
                         <th>Contact number</th>
@@ -148,37 +150,45 @@
 
                     <div class="inputs">
                         <div>
-                            <div class="label"> Designation/Postion: </div>
+                            <div class="label"> Designation: </div>
                             <input type="textbox" class="textbox" name="reg-designation">
                         </div>
                     </div>
 
                     <div class="inputs">
-                        <label for="label">Rank:</label>
-                        <select id="rank" name="rank">
-                            <option value="Private">Mr.</option>
-                            <option value="Private">Ms.</option>
-                            <option value="Private">Private</option>
-                            <option value="Private first class">Private first class</option>
-                            <option value="Corporal">Corporal</option>
-                            <option value="Sergeant">Sergeant</option>
-                            <option value="Staff sergeant">Staff sergeant	</option>
-                            <option value="Technical sergeant">Technical sergeant</option>
-                            <option value="Master sergeant">Master sergeant</option>
-                            <option value="Senior master sergeant">Senior master sergeant</option>
-                            <option value="Chief master sergeant">Chief master sergeant</option>
-                            <option value="Second lieutenant">Second lieutenant</option>
-                            <option value="First lieutenant">First lieutenant</option>
-                            <option value="Captain">Captain</option>
-                            <option value="Major">Major</option>
-                            <option value="Lieutenant Colonel">Lieutenant Colonel</option>
-                            <option value="Colonel">Colonel</option>
-                            <option value="Brigadier general">Brigadier general</option>
-                            <option value="	Major general">Major general</option>
-                            <option value="Lieutenant general">Lieutenant general</option>
-                            <option value="General">General</option>
-                        </select>
-                            </div>
+                        <div>
+                            <div class="label"> Position: </div>
+                            <input type="textbox" class="textbox" name="reg-position">
+                        </div>
+                    </div>
+
+
+                    <div class="inputs">
+                    <label for="reg-rank">Rank:</label>
+                    <select id="reg-rank" name="reg-rank">
+                        <option value="Private">Mr.</option>
+                        <option value="Private">Ms.</option>
+                        <option value="Private">Private</option>
+                        <option value="Private first class">Private first class</option>
+                        <option value="Corporal">Corporal</option>
+                        <option value="Sergeant">Sergeant</option>
+                        <option value="Staff sergeant">Staff sergeant</option>
+                        <option value="Technical sergeant">Technical sergeant</option>
+                        <option value="Master sergeant">Master sergeant</option>
+                        <option value="Senior master sergeant">Senior master sergeant</option>
+                        <option value="Chief master sergeant">Chief master sergeant</option>
+                        <option value="Second lieutenant">Second lieutenant</option>
+                        <option value="First lieutenant">First lieutenant</option>
+                        <option value="Captain">Captain</option>
+                        <option value="Major">Major</option>
+                        <option value="Lieutenant Colonel">Lieutenant Colonel</option>
+                        <option value="Colonel">Colonel</option>
+                        <option value="Brigadier general">Brigadier general</option>
+                        <option value="Major general">Major general</option>
+                        <option value="Lieutenant general">Lieutenant general</option>
+                        <option value="General">General</option>
+                    </select>
+                </div>
                     
                     <div class="inputs">
                         <div>
@@ -194,7 +204,7 @@
                     <div class="inputs">
                         <div>
                             <div class="label"> Contact no: </div>
-                            <input type="textbox" class="textbox" name="reg-contact">
+                            <input type="number" class="textbox" name="reg-contact">
                         </div>
                     </div>
 
@@ -204,7 +214,7 @@
                             <input type="textbox" class="textbox" name="reg-purpose">
                         </div>
                     </div>
-
+<!-- 
                     <div class="inputs">
                         <div>
                             <div class="label"> Time-in: </div>
@@ -217,7 +227,7 @@
                             <div class="label"> Time-out: </div>
                             <input type="time" class="textbox" name="reg-time-out">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -242,14 +252,21 @@
 
                     <div class="inputs">
                         <div>
-                            <div class="label"> Designation/Position:: </div>
+                            <div class="label"> Designation: </div>
                             <input type="textbox" class="textbox" name="vip-designation">
                         </div>
                     </div>
 
                     <div class="inputs">
-                    <label for="label">Rank:</label>
-                        <select id="rank" name="rank">
+                        <div>
+                            <div class="label">Position: </div>
+                            <input type="textbox" class="textbox" name="vip-position">
+                        </div>
+                    </div>
+
+                    <div class="inputs">
+                    <label for="vip-rank">Rank:</label>
+                        <select id="vip-rank" name="vip-rank">
                             <option value="Private">Mr.</option>
                             <option value="Private">Ms.</option>
                             <option value="Private">Private</option>
@@ -307,7 +324,7 @@
                         </div>
                     </div>
 
-                    <div class="inputs">
+                    <!-- <div class="inputs">
                         <div>
                             <div class="label"> Time-in: </div>
                             <input type="time" class="textbox" name="vip-time-in">
@@ -319,7 +336,7 @@
                             <div class="label"> Time-out: </div>
                             <input type="time" class="textbox" name="vip-time-out">
                         </div>
-                    </div>
+                    </div> -->
 
                     <div class="inputs">
                         <div>

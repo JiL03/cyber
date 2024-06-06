@@ -1,4 +1,14 @@
 <?php
+
+session_start();
+if (isset($_SESSION['username'])) {
+    header("Location: ../dashboard.php"); // Redirect to dashboard if already logged in
+    exit;
+}
+
+
+
+
 // Database connection parameters
 $host = 'localhost'; // Assuming your database is hosted locally
 $dbname = 'cybervlog';
@@ -33,6 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // Compare the input password with the password from the database
             if ($password === $db_password) {
                 // Passwords match, redirect to dashboard
+                $_SESSION['username'] = $username;
                 header("Location: ../dashboard.php");
                 exit;
             } else {
@@ -48,4 +59,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-s

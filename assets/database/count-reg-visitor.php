@@ -25,7 +25,7 @@
     // this method will get the information of regular visitors
     function handleGet_reg_count($pdo) {
         try {
-            $sql = "SELECT * FROM tb_regular WHERE time_out = '00:00:00' OR (time_out >= CURRENT_TIME() AND time_out != '00:00:00')";
+            $sql = "SELECT * FROM tb_regular";
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
             $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

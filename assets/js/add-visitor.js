@@ -1,5 +1,17 @@
 const addVisitor_filePath = "database/add-visitor.php";
 
+
+var d = new Date();
+var hours = d.getHours();
+var minutes = d.getMinutes();
+var seconds = d.getSeconds();
+
+if (minutes < 10) minutes = '0' + minutes;
+if (seconds < 10) seconds = '0' + seconds;
+
+var time = hours + ":" + minutes + ":" + seconds;
+
+
 function add_visitor() {
     const regContainer = document.getElementById('reg_input_container');
     const vipContainer = document.getElementById('vip_input_container');
@@ -18,13 +30,14 @@ function addRegularVisitor() {
     const name = document.querySelector('input[name="reg-name"]').value;
     const designation = document.querySelector('input[name="reg-designation"]').value;
     const position = document.querySelector('input[name="reg-position"]').value;
-    const rank = document.querySelector('input[name="reg-rank"]').value;
+    const rank = document.querySelector('select[name="reg-rank"]').value;
     const unit = document.querySelector('input[name="reg-unit"]').value;
-    const organization = document.querySelector('input[name="reg-organization"]').value;
     const contact = document.querySelector('input[name="reg-contact"]').value;
     const purpose = document.querySelector('input[name="reg-purpose"]').value;
-    const timeIn = document.querySelector('input[name="reg-time-in"]').value;
-    const timeOut = document.querySelector('input[name="reg-time-out"]').value;
+    const timeIn = time;
+    const timeOut = "TBD";
+
+    
 
     // Construct the data object
     const data = {
@@ -33,11 +46,10 @@ function addRegularVisitor() {
         position: position,
         rank: rank,
         unit: unit,
-        organization: organization,
         contact: contact,
         purpose: purpose,
-        timeIn: timeIn + ":00",
-        timeOut: timeOut + ":00"
+        timeIn: timeIn,
+        timeOut: timeOut,
         // Add more fields here as needed
     };
 
@@ -73,14 +85,13 @@ function addVIPVisitor() {
     const name = document.querySelector('input[name="vip-name"]').value;
     const designation = document.querySelector('input[name="vip-designation"]').value;
     const position = document.querySelector('input[name="vip-position"]').value;
-    const rank = document.querySelector('input[name="vip-rank"]').value;
-    const unit = document.querySelector('input[name="vip-unit"]').value;
-    const organization = document.querySelector('input[name="vip-organization"]').value;
+    const rank = document.querySelector('select[name="vip-rank"]').value;
+    const unit = document.querySelector('input[name="vip-unit"]').value; 
     const contact = document.querySelector('input[name="vip-contact"]').value;
     const purpose = document.querySelector('input[name="vip-purpose"]').value;
     const comment = document.querySelector('input[name="vip-comment"]').value;
-    const timeIn = document.querySelector('input[name="vip-time-in"]').value;
-    const timeOut = document.querySelector('input[name="vip-time-out"]').value;
+    const timeIn = time;
+    const timeOut = "TBD";
     
     // Get signature data from canvas
     const canvas = document.getElementById('signatureCanvas');
@@ -94,12 +105,11 @@ function addVIPVisitor() {
         position: position,
         rank: rank,
         unit: unit,
-        organization: organization,
         contact: contact,
         purpose: purpose,
         comment: comment,
-        timeIn: timeIn + ":00",
-        timeOut: timeOut + ":00",
+        timeIn: timeIn,
+        timeOut: timeOut,
         signature: signatureData // Add the signature data to the data object
         // Add more fields here as needed
     };
