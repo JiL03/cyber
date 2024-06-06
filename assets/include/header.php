@@ -1,4 +1,15 @@
 <!-- header.php -->
+<?php 
+    session_start();
+    if (!isset($_SESSION['username'])) {
+        header("Location: ../index.php");
+        exit;
+    }
+
+?>
+
+
+
 <header>
     <div class="header">
         <div class="logo">
@@ -20,7 +31,7 @@
                 </div>
                 <div class="dropdown">
                     <ul>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="../assets/database/logout.php">Logout</a></li>
                     </ul>
                 </div>
             </div>

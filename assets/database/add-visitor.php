@@ -38,7 +38,6 @@ function handleREGPost($pdo) {
         $position = $data['position'] ?? null;
         $rank = $data['rank'] ?? null;
         $unit = $data['unit'] ?? null;
-        $organization = $data['organization'] ?? null;
         $contact = $data['contact'] ?? null;
         $purpose = $data['purpose'] ?? null;
         $timeIn = $data['timeIn'] ?? null;
@@ -47,7 +46,7 @@ function handleREGPost($pdo) {
         // Begin a transaction
         $pdo->beginTransaction();
 
-        $sql = "INSERT INTO tb_regular (fullname, designation, position, rank, unit, organization, contact_no, purpose_visit, time_in, time_out) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tb_regular (fullname, designation, position, rank, unit, contact_no, purpose_visit, time_in, time_out) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
 
         // Bind parameters
@@ -56,11 +55,10 @@ function handleREGPost($pdo) {
         $stmt->bindParam(3, $position);
         $stmt->bindParam(4, $rank);
         $stmt->bindParam(5, $unit);
-        $stmt->bindParam(6, $organization);
-        $stmt->bindParam(7, $contact);
-        $stmt->bindParam(8, $purpose);
-        $stmt->bindParam(9, $timeIn);
-        $stmt->bindParam(10, $timeOut);
+        $stmt->bindParam(6, $contact);
+        $stmt->bindParam(7, $purpose);
+        $stmt->bindParam(8, $timeIn);
+        $stmt->bindParam(9, $timeOut);
 
         // Execute the statement
         $stmt->execute();
@@ -89,7 +87,6 @@ function handleVIPPost($pdo) {
         $position = $data['position'] ?? null;
         $rank = $data['rank'] ?? null;
         $unit = $data['unit'] ?? null;
-        $organization = $data['organization'] ?? null;
         $contact = $data['contact'] ?? null;
         $purpose = $data['purpose'] ?? null;
         $comment = $data['comment'] ?? null;
@@ -101,7 +98,7 @@ function handleVIPPost($pdo) {
         // Begin a transaction
         $pdo->beginTransaction();
 
-        $sql = "INSERT INTO tb_vip (fullname, designation, position, rank, unit, organization, contact_no, purpose_visit, message, signature, images, time_in, time_out) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO tb_vip (fullname, designation, position, rank, unit, contact_no, purpose_visit, message, signature, images, time_in, time_out) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
 
         // Bind parameters
@@ -110,21 +107,20 @@ function handleVIPPost($pdo) {
         $stmt->bindParam(3, $position);
         $stmt->bindParam(4, $rank);
         $stmt->bindParam(5, $unit);
-        $stmt->bindParam(6, $organization);
-        $stmt->bindParam(7, $contact);
-        $stmt->bindParam(8, $purpose);
-        $stmt->bindParam(9, $comment);  
+        $stmt->bindParam(6, $contact);
+        $stmt->bindParam(7, $purpose);
+        $stmt->bindParam(8, $comment);  
 
         $signatureBinary = base64_decode(str_replace('data:image/png;base64,', '', $signature));
 
-        $stmt->bindParam(10, $signatureBinary);
+        $stmt->bindParam(9, $signatureBinary);
 
         // Convert the base64 encoded image data to binary
         $imageBinary = base64_decode(str_replace('data:image/png;base64,', '', $imageData));
-        $stmt->bindParam(11, $imageBinary, PDO::PARAM_LOB);
+        $stmt->bindParam(10, $imageBinary, PDO::PARAM_LOB);
 
-        $stmt->bindParam(12, $timeIn);
-        $stmt->bindParam(13, $timeOut);
+        $stmt->bindParam(11, $timeIn);
+        $stmt->bindParam(12, $timeOut);
 
         // Execute the statement
         $stmt->execute();

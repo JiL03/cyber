@@ -31,7 +31,6 @@ function displayVipInfo(data) {
             <td>${visitor.position}</td>
             <td>${visitor.rank}</td>
             <td>${visitor.unit}</td>
-            <td>${visitor.organization}</td>
             <td>${visitor.contact_no}</td>
             <td>${visitor.purpose_visit}</td>
             <td>${visitor.message}</td>
