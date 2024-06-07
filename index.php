@@ -16,8 +16,7 @@ if (isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>External CSS Background Image</title>
     <link rel="stylesheet" href="assets/css/index.css">
-
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
 
@@ -28,16 +27,27 @@ if (isset($_SESSION['username'])) {
     <div class="logobox">
         <img src="assets/img/logo.png" alt="Logo" class="logo">
         <p class="welcome">WELCOME TO <BR> CYBER BATTALION</p>
+        
     </div>
 
     <div class="loginbox">
         <p class="text">CYBER</p>
         <p class="text2">VISITOR'S LOG</p>
         <p class="text3">LOG-IN</p>
+        
     </div>
 
-    <div class="underline"></div>
+    <div class="underline">
+   <?php if(isset($_SESSION['error'])){
+    echo ' <div class="alert alert-danger" role="alert">
+  Incorrect Username or Password
+</div>';
+unset($_SESSION['error']);
+   }
+    ?>
+    </div>
     <div class="box">
+        
         <img src="assets/img/user-icon.png" alt="user" class="user">  
         <input type="text" name="username" class="username-input" placeholder="Enter your username">
     </div>

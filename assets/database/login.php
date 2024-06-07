@@ -48,11 +48,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit;
             } else {
                 // Password is incorrect
-                echo "Incorrect password";
+                $_SESSION['error'] = "Incorrect password";
+                header("Location: ../../index.php");
             }
         } else {
             // Username doesn't exist
-            echo "Username not found";
+            $_SESSION['error'] = "Username not found";
+            header("Location: ../../index.php");
+
         }
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
