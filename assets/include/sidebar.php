@@ -11,6 +11,10 @@
                     <i class="dashboard-alt"></i>
                     <span class="nav-text">Visitors</span>
                 </a>
+                <a href="users.php" class="nav-link">
+                    <i class="dashboard-alt"></i>
+                    <span class="nav-text">Users</span>
+                </a>
             </ul>
         </div>
     </div>
