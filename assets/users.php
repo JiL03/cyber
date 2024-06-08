@@ -5,10 +5,13 @@ include 'database/conns.php';
 ?>
 
 <?php
+
+
 if (isset($_SESSION['alert_message'])) {
     echo '<script>alert("' . $_SESSION['alert_message'] . '");</script>';
     unset($_SESSION['alert_message']); 
 }
+
 
 include 'database/conns.php';
 $roleType = "";
@@ -25,8 +28,6 @@ $stmt->execute();
 
 
 $result = $stmt->get_result();
-
-
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $roleType = $row['user_role'];
@@ -34,6 +35,7 @@ if ($result->num_rows > 0) {
 } else {
     echo '<script>console.log("User not found.");</script>';
 }
+
 $stmt->close();
 
 
@@ -60,7 +62,6 @@ if($roleType == "User"){
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
 
 
-</style>
 </head>
 
 
@@ -73,6 +74,7 @@ if($roleType == "User"){
                 <span class="addUser-btn-text"> Add User </span>
             </div>
         </div>
+        
 
         <div class="table1">
             <div class="guestType">
@@ -133,9 +135,12 @@ if($roleType == "User"){
         </div>
     </div>
 
+
+    
     <div class="popup" id="popup">
         <div class="popup-content">
             <div class="popup-title">Add User</div>
+            <div id="alert-container"></div>
                 <div id="user_input_container" class="input-container">
                     <form class="input-container" id="addUserForm" method="POST" action="add_user.php" enctype="multipart/form-data">
                     <div class="text-input-container" >
@@ -226,6 +231,42 @@ if($roleType == "User"){
             document.getElementById('popup').classList.add('show');
             });
          });
+
+         document.getElementById('add-visitor-btn').addEventListener('click', function() {
+   
+        var inputs = document.querySelectorAll('#addUserForm input[type=text], #addUserForm input[type=number], #addUserForm select');
+
+    
+        var isEmpty = false;
+
+    
+        inputs.forEach(function(input) {
+            if (input.value.trim() === '') {
+                isEmpty = true;
+            }
+        });
+
+    
+        if (isEmpty) {
+            var alertMessage = '<div class="alert alert-danger" role="alert">Please fill in all fields.</div>';
+            document.getElementById('alert-container').innerHTML = alertMessage;
+            event.preventDefault(); 
+
+            setTimeout(function() {
+            document.getElementById('alert-container').innerHTML = '';
+        }, 2000);
+        }else {
+        document.getElementById('alert-container').innerHTML = ''; // Clear previous alert
+
+        
+    }
+    });
+
+
+
+
+
+
 
 
 
