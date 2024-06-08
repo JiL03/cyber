@@ -9,6 +9,39 @@ if (isset($_SESSION['alert_message'])) {
     echo '<script>alert("' . $_SESSION['alert_message'] . '");</script>';
     unset($_SESSION['alert_message']); 
 }
+
+include 'database/conns.php';
+$roleType = "";
+
+
+$sql = "SELECT user_role FROM tb_users WHERE username = ?";
+$stmt = $conn->prepare($sql);
+
+
+$stmt->bind_param("s", $_SESSION['username']);
+
+
+$stmt->execute();
+
+
+$result = $stmt->get_result();
+
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $roleType = $row['user_role'];
+    echo '<script>console.log("Role: ' . $roleType . '");</script>';
+} else {
+    echo '<script>console.log("User not found.");</script>';
+}
+$stmt->close();
+
+
+if($roleType == "User"){
+    header("Location: dashboard.php");
+    exit();
+}
+
 ?>
 
 <!DOCTYPE html>
